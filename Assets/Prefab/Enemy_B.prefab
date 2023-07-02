@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5444373457244308933}
   - component: {fileID: 5444373457244308932}
   - component: {fileID: 5444373457244308987}
-  - component: {fileID: 5444373457244308986}
   - component: {fileID: 5444373457244308985}
   m_Layer: 0
   m_Name: Enemy_B
@@ -100,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9894658e3ea474682f70088024efa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigid: {fileID: 5444373457244308986}
+  rigid: {fileID: 0}
   exp:
   - {fileID: 7434608867011961557, guid: e6060f8237c8aab4da34ace9641dabd5, type: 3}
   - {fileID: 0}
@@ -133,27 +132,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!50 &5444373457244308986
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5444373457244308984}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 12
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!70 &5444373457244308985
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

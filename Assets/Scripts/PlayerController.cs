@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Drawing;
+using static UnityEngine.AudioSettings;
 
 public class PlayerController : MonoBehaviour
 {
@@ -119,8 +120,10 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-		dir = new Vector3(gameManager.joystick.Horizontal, gameManager.joystick.Vertical, 0);
-		//dir = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized;
+		if(gameManager.isMobile)
+			dir = new Vector3(gameManager.joystick.Horizontal, gameManager.joystick.Vertical, 0);
+		else
+			dir = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized;
 
 		if (dir != Vector3.zero)
         {
@@ -212,32 +215,32 @@ public class PlayerController : MonoBehaviour
 		Vector3 newDir = Vector3.zero;
 		while (true)
 		{
-			for (int i = 0; i < wandSize; i++)
-			{
-				if (summonEnemy.enemys.Count == 1 && summonEnemy.enemys[0] == null) ;
-				else
-				{
-					float distance = Mathf.Infinity;
-					float currentDist;
-					int targetIndex = -1;
-					for (int j = 0; j < summonEnemy.enemys.Count; j++)
-					{
-						currentDist = Vector2.Distance(transform.position, summonEnemy.enemys[j].position);
+			//for (int i = 0; i < wandSize; i++)
+			//{
+			//	if (summonEnemy.enemys.Count == 1 && summonEnemy.enemys[0] == null) ;
+			//	else
+			//	{
+			//		float distance = Mathf.Infinity;
+			//		float currentDist;
+			//		int targetIndex = -1;
+			//		for (int j = 0; j < summonEnemy.enemys.Count; j++)
+			//		{
+			//			currentDist = Vector2.Distance(transform.position, summonEnemy.enemys[j].position);
 
-						if (distance > currentDist)
-						{
-							targetIndex = j;
-							distance = currentDist;
-						}
-					}
+			//			if (distance > currentDist)
+			//			{
+			//				targetIndex = j;
+			//				distance = currentDist;
+			//			}
+			//		}
 
-					newDir = summonEnemy.enemys[targetIndex].position - transform.position;
-				}
-				Quaternion rotate = Quaternion.LookRotation(forward: Vector3.forward, upwards: newDir);
-				Instantiate(wand, transform.position, rotate);
-				yield return new WaitForSeconds(wandDelay/5);
+			//		newDir = summonEnemy.enemys[targetIndex].position - transform.position;
+			//	}
+			//	Quaternion rotate = Quaternion.LookRotation(forward: Vector3.forward, upwards: newDir);
+			//	Instantiate(wand, transform.position, rotate);
+			//	yield return new WaitForSeconds(wandDelay/5);
 
-			}
+			//}
 			yield return new WaitForSeconds(wandDelay);
 		}
 	}
@@ -249,9 +252,9 @@ public class PlayerController : MonoBehaviour
 		{
 			for (int i = 0; i < lightningSize; i++)
 			{
-				if (summonEnemy.enemys.Count == 1 && summonEnemy.enemys[0] == null) ;
-				else
-					pos = summonEnemy.enemys[Random.Range(0, summonEnemy.enemys.Count)].position;
+				//if (summonEnemy.enemys.Count == 1 && summonEnemy.enemys[0] == null) ;
+				//else
+				//	pos = summonEnemy.enemys[Random.Range(0, summonEnemy.enemys.Count)].position;
 				GameObject lightn = Instantiate(lightning, pos + (Vector3.down * -2.4f), Quaternion.identity);
 
 				Destroy(lightn, 0.5f);
@@ -282,9 +285,9 @@ public class PlayerController : MonoBehaviour
 		{
 			for (int i = 0; i < robotCleanerSize; i++)
 			{
-				if (summonEnemy.enemys.Count == 1 && summonEnemy.enemys[0] == null) ;
-				else
-					newDir = summonEnemy.enemys[Random.Range(0, summonEnemy.enemys.Count)].position - transform.position;
+				//if (summonEnemy.enemys.Count == 1 && summonEnemy.enemys[0] == null) ;
+				//else
+				//	newDir = summonEnemy.enemys[Random.Range(0, summonEnemy.enemys.Count)].position - transform.position;
 				Quaternion rotate = Quaternion.LookRotation(forward: Vector3.forward, upwards: newDir);
 				Instantiate(robotCleaner, transform.position, rotate);
 				yield return new WaitForSeconds(0.05f);
@@ -300,9 +303,9 @@ public class PlayerController : MonoBehaviour
 		{
 			for (int i = 0; i < spiderSize; i++)
 			{
-				if (summonEnemy.enemys.Count == 1 && summonEnemy.enemys[0] == null) ;
-				else
-					newDir = summonEnemy.enemys[Random.Range(0, summonEnemy.enemys.Count)].position - transform.position;
+				//if (summonEnemy.enemys.Count == 1 && summonEnemy.enemys[0] == null) ;
+				//else
+				//	newDir = summonEnemy.enemys[Random.Range(0, summonEnemy.enemys.Count)].position - transform.position;
 				Quaternion rotate = Quaternion.LookRotation(forward: Vector3.forward, upwards: newDir);
 				GameObject newSpider = Instantiate(spider, transform.position, rotate);
 				newSpider.GetComponent<Weapon>().chain = spiderChain;

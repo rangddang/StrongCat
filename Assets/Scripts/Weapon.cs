@@ -86,7 +86,7 @@ public class Weapon : MonoBehaviour
 			}
 			BounceFunction();
 			ChainFunction();
-			collision.gameObject.GetComponent<Enemy>().Hit(damage, dir, knockback);
+			//collision.gameObject.GetComponent<Enemy>().Hit(damage, dir, knockback);
 			
 		}
 		if (Penetration)
@@ -104,8 +104,8 @@ public class Weapon : MonoBehaviour
 		if (Bounce)
 		{
 			Vector3 newDir = Vector3.zero;
-			if (summonEnemy.enemys.Count > 0 && summonEnemy.enemys[0] != null)
-				newDir = summonEnemy.enemys[Random.Range(0, summonEnemy.enemys.Count)].position - transform.position;
+			//if (summonEnemy.enemys.Count > 0 && summonEnemy.enemys[0] != null)
+			//	newDir = summonEnemy.enemys[Random.Range(0, summonEnemy.enemys.Count)].position - transform.position;
 			Quaternion rotate = Quaternion.LookRotation(forward: Vector3.forward, upwards: newDir);
 			transform.rotation = rotate;
 		}
@@ -124,49 +124,49 @@ public class Weapon : MonoBehaviour
 			int targetIndex = -1;
 			chainTrans[0] = transform;
 
-			for (int i = 0; i < chain; i++)
-			{
-				distance = Mathf.Infinity;
-				if(i != 0)
-					chainPos.Add(chainTrans[i-1].position);
-				else
-					chainPos[i] = chainTrans[i].position;
+			//for (int i = 0; i < chain; i++)
+			//{
+			//	distance = Mathf.Infinity;
+			//	if(i != 0)
+			//		chainPos.Add(chainTrans[i-1].position);
+			//	else
+			//		chainPos[i] = chainTrans[i].position;
 
-				for (int j = 0; j < summonEnemy.enemys.Count; j++)
-				{
-					if (summonEnemy.enemys[j] != null)
-					{
-						int count = 0;
-						for (int k = 0; k < i; k++)
-							if (chainPos[k] == summonEnemy.enemys[j].position)
-								count++;
+			//	for (int j = 0; j < summonEnemy.enemys.Count; j++)
+			//	{
+			//		if (summonEnemy.enemys[j] != null)
+			//		{
+			//			int count = 0;
+			//			for (int k = 0; k < i; k++)
+			//				if (chainPos[k] == summonEnemy.enemys[j].position)
+			//					count++;
 
-						if(count == 0)
-						{
-							currentDist = Vector2.Distance(chainPos[i], summonEnemy.enemys[j].position);
+			//			if(count == 0)
+			//			{
+			//				currentDist = Vector2.Distance(chainPos[i], summonEnemy.enemys[j].position);
 
-							if (distance > currentDist)
-							{
-								targetIndex = j;
-								distance = currentDist;
-							}
-						}
-					}
-				}
-				if (i == 0)
-				{
-					chainTrans[0] = summonEnemy.enemys[targetIndex];
-					chainPos[0] = chainTrans[0].position;
-				}
-				else
-				{
-					chainTrans.Add(summonEnemy.enemys[targetIndex]);
-					chainPos[i] = chainTrans[i].position;
-				}
-				lineRenderer.SetPosition(i, chainPos[i]);
-				chainTrans[i].gameObject.GetComponent<Enemy>().StartSlow(slow);
-				chainTrans[i].gameObject.GetComponent<Enemy>().Hit(damage, dir, knockback);
-			}
+			//				if (distance > currentDist)
+			//				{
+			//					targetIndex = j;
+			//					distance = currentDist;
+			//				}
+			//			}
+			//		}
+			//	}
+			//	if (i == 0)
+			//	{
+			//		chainTrans[0] = summonEnemy.enemys[targetIndex];
+			//		chainPos[0] = chainTrans[0].position;
+			//	}
+			//	else
+			//	{
+			//		chainTrans.Add(summonEnemy.enemys[targetIndex]);
+			//		chainPos[i] = chainTrans[i].position;
+			//	}
+			//	lineRenderer.SetPosition(i, chainPos[i]);
+			//	chainTrans[i].gameObject.GetComponent<Enemy>().StartSlow(slow);
+			//	chainTrans[i].gameObject.GetComponent<Enemy>().Hit(damage, dir, knockback);
+			//}
 			
 		}
 	}
@@ -177,7 +177,7 @@ public class Weapon : MonoBehaviour
 
 		if (collision.gameObject.CompareTag("Enemy") == true)
 		{
-			collision.gameObject.GetComponent<Enemy>().Hit(damage, dir, knockback);
+			//collision.gameObject.GetComponent<Enemy>().Hit(damage, dir, knockback);
 		}
 	}
 }

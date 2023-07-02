@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3471428202097464605}
   - component: {fileID: 3471428202097464606}
   - component: {fileID: 3471428202097464607}
-  - component: {fileID: 3471428202097464800}
   - component: {fileID: 3471428202097464801}
   m_Layer: 0
   m_Name: Enemy_A
@@ -100,19 +99,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9894658e3ea474682f70088024efa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigid: {fileID: 3471428202097464800}
-  exp:
-  - {fileID: 4021791256509399480, guid: b3fa92beee46ed442868dbb58f13c3ab, type: 3}
-  - {fileID: 0}
   hitDamageText: {fileID: 7424179648706416642, guid: 90dc847db6f454f47847799fd488e201, type: 3}
-  speed: 2.5
+  items: []
   damage: 2
-  knockbackResistance: 0
-  Jump: 0
-  jumpSpeed: 0
   hp: 12
+  currentMoveSpeed: 3
+  knockbackResistance: 0
   damageDelay: 0.5
-  isBoss: 0
 --- !u!95 &3471428202097464607
 Animator:
   serializedVersion: 4
@@ -133,27 +126,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!50 &3471428202097464800
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3471428202097464802}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 12
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!70 &3471428202097464801
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

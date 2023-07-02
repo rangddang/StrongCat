@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
+	public bool isMobile = false;
+
 	public VariableJoystick joystick;
 
 	private PlayerController player;
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
 	{
 		player = FindObjectOfType<PlayerController>();
 		SetWeapons();
+		if(!isMobile)
+			joystick.gameObject.SetActive(false);
 	}
 
 
@@ -36,14 +40,8 @@ public class GameManager : MonoBehaviour
 			Pause();
 		}
 
-		if (isPause)
-		{
-			joystick.gameObject.SetActive(false);
-		}
-		else
-		{
-			joystick.gameObject.SetActive(true);
-		}
+		if (isMobile)
+			joystick.gameObject.SetActive(!isPause);
 
 		if (GameOver)
         {
